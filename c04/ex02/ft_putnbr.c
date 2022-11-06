@@ -1,23 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/06 11:34:56 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/06 17:34:18 by maserrie         ###   ########.fr       */
+/*   Created: 2022/11/01 22:31:09 by maserrie          #+#    #+#             */
+/*   Updated: 2022/11/02 14:28:13 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
-{
-	unsigned int	i;
+#include <unistd.h>
 
-	i = 0;
-	if (n == 0)
-		return (0);
-	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n - 1)
-		i++;
-	return ((unsigned char) s1[i] - (unsigned char) s2[i]);
+void	ft_putchar(char c)
+{
+	c += '0';
+	write(1, &c, 1);
+}
+
+void	ft_putnbr2(unsigned int n)
+{
+	if (n < 10)
+		ft_putchar(n);
+	else
+	{
+		ft_putnbr2(n / 10);
+		ft_putchar(n % 10);
+	}
+}
+
+void	ft_putnbr(int nb)
+{
+	unsigned int	n;
+
+	if (nb < 0)
+	{
+		write(1, "-", 1);
+		nb *= -1;
+	}
+	n = nb;
+	ft_putnbr2(n);
 }

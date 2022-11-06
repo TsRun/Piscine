@@ -6,14 +6,14 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 18:57:57 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/05 18:12:38 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/06 23:38:17 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #define HEXA "0123456789abcdef"
 
-void	ft_putchar(char c)
+void	ft_putchar(unsigned char c)
 {
 	write(1, &c, 1);
 }
@@ -51,10 +51,10 @@ void	ft_print_str(char *str, unsigned int size)
 	while (i <= size)
 	{
 		c = str[i];
-		if (c < 26 || c > 126)
+		if (c < 32 || c > 126)
 			ft_putchar('.');
 		else
-			ft_putchar(c);
+			ft_putchar((unsigned char) c);
 		i++;
 	}
 	ft_putchar('\n');

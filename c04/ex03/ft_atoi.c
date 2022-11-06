@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/06 11:34:56 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/06 17:34:18 by maserrie         ###   ########.fr       */
+/*   Created: 2022/11/06 17:40:32 by maserrie          #+#    #+#             */
+/*   Updated: 2022/11/06 18:13:50 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+int	ft_atoi(char *str)
 {
-	unsigned int	i;
+	int	i;
+	int	signe;
+	int	res;
 
+	res = 0;
+	signe = 1;
 	i = 0;
-	if (n == 0)
-		return (0);
-	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n - 1)
+	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
 		i++;
-	return ((unsigned char) s1[i] - (unsigned char) s2[i]);
+	while (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			signe *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = res * 10 + str[i] - 48;
+		i++;
+	}
+	return (res * signe);
 }
