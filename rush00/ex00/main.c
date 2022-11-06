@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 10:22:16 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/05 11:51:33 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/05 12:07:48 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	main(int argc, char **argv)
 	if (a < 1 || b < 1)
 	{
 		ft_putstr("Tu peux mettre un nombre strictement positif");
-		ft_putstr("stp Gero (si c'est pas Gero j'ai le seum)\n");
+		ft_putstr(" stp Gero (si c'est pas Gero j'ai le seum)\n");
 	}
 	else
 		rush(a, b);
