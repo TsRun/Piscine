@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 22:31:09 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/06 23:28:59 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:17:20 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-int	ft_instr(char c, char *str)
+int	ft_instr(char c, char *str, int n)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (str[i] && i < n)
 	{
 		if (c == str[i])
 			return (i);
@@ -38,15 +38,14 @@ int	ft_checkbase(char *base)
 	i = 0;
 	while (base[i])
 	{
-		if (base[i] == '-' || base[i] == '+' || ft_instr(base[i], base + i + 1))
-			return (1);
+		if (base[i] == '-' || base[i] == '+' || ft_instr(base[i], base, i) != -1)
+			return (-1);
 		if ((base[i] >= '\t' && base[i] <= '\r') || base[i] == ' ')
-			return (1);
+			return (-1);
 		i++;
 	}
-	return (0);
+	return (1);
 }
-
 
 int	ft_atoi_base2(char *str, char *base, int len)
 {
@@ -65,15 +64,15 @@ int	ft_atoi_base2(char *str, char *base, int len)
 			signe *= -1;
 		i++;
 	}
-	while ()
+	while (ft_instr(str[i], base, len) != -1)
 	{
-		res = res * len;
+		res = res * len + ft_instr(str[i], base, len);
 		i++;
 	}
 	return (res * signe);
 }
 
-void	ft_atoi_base(int nb, char *base)
+int	ft_atoi_base(char *nb, char *base)
 {
 	unsigned int	len;
 
@@ -81,6 +80,6 @@ void	ft_atoi_base(int nb, char *base)
 	while (base[len])
 		len++;
 	if (ft_checkbase(base) == -1 || len < 2)
-		return 0;
-	return (ft_atoi_base2(n, base, len));
+		return (0);
+	return (ft_atoi_base2(nb, base, len));
 }

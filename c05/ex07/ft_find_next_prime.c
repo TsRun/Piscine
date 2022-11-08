@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 04:40:19 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/08 18:14:27 by maserrie         ###   ########.fr       */
+/*   Created: 2022/11/07 03:34:17 by maserrie          #+#    #+#             */
+/*   Updated: 2022/11/07 03:45:27 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_alpha(char *str)
+int	ft_is_prime(int nb)
 {
 	int	i;
-	int	j;
 
-	i = 0;
-	if (str != "" && str[0] == '\0')
+	i = 3;
+	if (nb < 2)
 		return (0);
-	while (str[i])
+	if (nb == 2)
+		return (1);
+	if (nb % 2 == 0)
+		return (0);
+	while (i * i <= nb && i * i > 0)
 	{
-		j = str[i];
-		if (!((j >= 'a' && j <= 'z') || (j >= 'A' && j <= 'Z')))
+		if (nb % i == 0)
 			return (0);
-		i++;
+		i += 2;
 	}
 	return (1);
+}
+
+int	ft_find_next_prime(int nb)
+{
+	if (nb < 3)
+		return (2);
+	while (!(ft_is_prime(nb)))
+		nb++;
+	return (nb);
 }

@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 04:40:19 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/08 18:14:27 by maserrie         ###   ########.fr       */
+/*   Created: 2022/11/07 01:59:31 by maserrie          #+#    #+#             */
+/*   Updated: 2022/11/07 02:01:40 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_alpha(char *str)
+int	ft_iterative_factorial(int nb)
 {
 	int	i;
-	int	j;
 
-	i = 0;
-	if (str != "" && str[0] == '\0')
+	i = 1;
+	if (nb < 0)
 		return (0);
-	while (str[i])
-	{
-		j = str[i];
-		if (!((j >= 'a' && j <= 'z') || (j >= 'A' && j <= 'Z')))
-			return (0);
-		i++;
-	}
-	return (1);
+	while (nb > 0)
+		i *= nb--;
+	return (i);
 }

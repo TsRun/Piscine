@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 04:40:19 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/08 18:14:27 by maserrie         ###   ########.fr       */
+/*   Created: 2022/11/07 02:10:25 by maserrie          #+#    #+#             */
+/*   Updated: 2022/11/07 02:12:11 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_alpha(char *str)
+int	ft_fibonacci(int i)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	if (str != "" && str[0] == '\0')
-		return (0);
-	while (str[i])
-	{
-		j = str[i];
-		if (!((j >= 'a' && j <= 'z') || (j >= 'A' && j <= 'Z')))
-			return (0);
-		i++;
-	}
-	return (1);
+	if (i < 0)
+		return (-1);
+	if (i == 0 || i == 1)
+		return (i);
+	return (ft_fibonacci(i - 1) + ft_fibonacci(i - 2));
 }
