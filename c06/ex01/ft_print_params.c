@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 02:13:52 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/08 21:48:46 by maserrie         ###   ########.fr       */
+/*   Created: 2022/11/08 16:21:54 by maserrie          #+#    #+#             */
+/*   Updated: 2022/11/08 19:29:10 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <unistd.h>
 
-int	ft_sqrt(int nb)
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	write(1, str, i);
+}
+
+int	main(int argc, char **argv)
 {
 	int	i;
 
 	i = 1;
-	if (nb < 1)
-		return (0);
-	while (i * i <= nb && i <= 46341)
+	while (i < argc)
 	{
-		if (i * i == nb)
-			return (i);
+		ft_putstr(argv[i]);
+		write(1, "\n", 1);
 		i++;
 	}
 	return (0);

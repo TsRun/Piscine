@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 02:13:52 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/08 21:48:46 by maserrie         ###   ########.fr       */
+/*   Created: 2022/11/09 10:17:45 by maserrie          #+#    #+#             */
+/*   Updated: 2022/11/09 10:20:06 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <stdlib.h>
 
-int	ft_sqrt(int nb)
+char	*ft_strdup(char *src)
 {
+	char	*dest;
 	int	i;
 
-	i = 1;
-	if (nb < 1)
-		return (0);
-	while (i * i <= nb && i <= 46341)
+	i = 0;
+	while (src[i])
+		i++;
+	dest = malloc (i + 1);
+	i = 0;
+	while (src[i])
 	{
-		if (i * i == nb)
-			return (i);
+		dest[i] = src[i];
 		i++;
 	}
-	return (0);
+	return (dest);
 }

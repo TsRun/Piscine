@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 03:46:51 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/08 15:43:04 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/08 18:42:23 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_recur_queens(int c, int tab[10][2], int *n)
 	i = 0;
 	if (c >= 10)
 	{
-		ft_puttab(tab, 9);
+		ft_puttab(tab, 10);
 		ft_putchar('\n');
 		*n = *n + 1;
 		return ;

@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 22:31:09 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/08 15:17:20 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/08 20:13:42 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int	ft_checkbase(char *base)
 	i = 0;
 	while (base[i])
 	{
-		if (base[i] == '-' || base[i] == '+' || ft_instr(base[i], base, i) != -1)
+		if (base[i] == '-' || base[i] == '+'
+			|| ft_instr(base[i], base, i) != -1)
 			return (-1);
 		if ((base[i] >= '\t' && base[i] <= '\r') || base[i] == ' ')
 			return (-1);
