@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:17:45 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/09 10:20:06 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/10 14:12:57 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strdup(char *src)
 {
 	char	*dest;
-	int	i;
+	int		i;
 
 	i = 0;
 	while (src[i])
@@ -27,5 +27,6 @@ char	*ft_strdup(char *src)
 		dest[i] = src[i];
 		i++;
 	}
+	dest[i] = 0;
 	return (dest);
 }
