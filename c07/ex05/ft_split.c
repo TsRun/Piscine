@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:41:56 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/10 14:16:58 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/10 14:23:03 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_strlen(char *str)
 
 int	ft_instr(char *str, char c)
 {
-	while(*str)
+	while (*str)
 	{
 		if (c == *str)
 			return (1);
