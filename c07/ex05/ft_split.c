@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:41:56 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/10 14:23:03 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/11 10:03:31 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ char	**ft_split(char *str, char *charset)
 		}
 		i++;
 	}
+	dest[j] = 0;
 	return (dest);
 }
