@@ -6,7 +6,7 @@
 /*   By: badam <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 04:21:46 by badam             #+#    #+#             */
-/*   Updated: 2019/06/22 04:11:02 by badam            ###   ########.fr       */
+/*   Updated: 2022/11/11 12:12:41 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 struct s_stock_str	*ft_strs_to_tab(int ac, char **av);
 
-void				ft_putnbr(int nb)
+void	ft_putnbr(int nb)
 {
 	long	size;
 	char	c;
@@ -41,7 +41,7 @@ void				ft_putnbr(int nb)
 	}
 }
 
-void				ft_putstr(char *str)
+void	ft_putstr(char *str)
 {
 	int i;
 
@@ -53,7 +53,7 @@ void				ft_putstr(char *str)
 	}
 }
 
-void				ft_show_tab(struct s_stock_str *par)
+void	ft_show_tab(struct s_stock_str *par)
 {
 	int	i;
 
@@ -61,9 +61,9 @@ void				ft_show_tab(struct s_stock_str *par)
 	while (par[i].str)
 	{
 		ft_putstr(par[i].str);
-		ft_putstr("\n");
+		ft_putstr(",");
 		ft_putnbr(par[i].size);
-		ft_putstr("\n");
+		ft_putstr(",");
 		ft_putstr(par[i].copy);
 		ft_putstr("\n");
 		i++;

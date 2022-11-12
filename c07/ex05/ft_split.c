@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:41:56 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/11 10:03:31 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/12 01:01:16 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	**ft_split(char *str, char *charset)
 
 	i = 0;
 	j = 0;
-	dest = malloc(ft_strlen(str) / 2 * sizeof(char *));
+	dest = malloc((ft_strlen(str) / 2 + 1) * sizeof(char *));
 	while (str[i])
 	{
 		nospace = i;
@@ -72,7 +72,8 @@ char	**ft_split(char *str, char *charset)
 			dest[j] = ft_strndup(str + nospace, i - nospace);
 			j++;
 		}
-		i++;
+		if (str[i])
+			i++;
 	}
 	dest[j] = 0;
 	return (dest);
