@@ -6,57 +6,36 @@
 #    By: maserrie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/13 00:28:41 by maserrie          #+#    #+#              #
-#    Updated: 2022/11/13 00:45:03 by maserrie         ###   ########.fr        #
+#    Updated: 2022/11/14 17:22:11 by maserrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS += srcs/main.c
-SRCS += srcs/ft_str.c
-SRCS += srcs/ft_split.c
-SRCS += srcs/ft_print_solution.c
-SRCS += srcs/ft_parse.c
-SRCS += srcs/ft_get_input.c
-SRCS += srcs/ft_free_mats.c
-SRCS += srcs/ft_file.c
-SRCS += srcs/ft_create_int_matrix.c
-SRCS += srcs/ft_create_char_matrix.c
-SRCS += srcs/ft_check_input.c
-SRCS += srcs/ft_bsq.c
+HEADERS = includes/
 
-INCLUDES = includes
+SRCS = srcs/ft_putchar.c srcs/ft_swap.c srcs/ft_putstr.c srcs/ft_strlen.c srcs/ft_strcmp.c
+
+CFLAGS = -Wall -Wextra -Werror
 
 OBJS = ${SRCS:.c=.o}
 
-NAME = bsq
-
-CC = gcc
-
-CFLAGS += -Wall
-CFLAGS += -Wextra
-CFLAGS += -Werror
-
-DFLAGS += -fsanitize=address,undefined
-DFLAGS += -g3
+NAME = libft.a
 
 RM = rm -f
 
-all: ${NAME}
+CC = gcc
 
-%.o : %.c
-    ${CC} ${CFLAGS} -I ${INCLUDES} -c $< -o $@
+.c.o:
+	${CC} ${CFLAG} -I ${HEADERS} -c $< -o ${<:.c=.o}
 
 ${NAME}: ${OBJS}
-    ${CC} -o ${NAME} ${OBJS}
+	ar rc ${NAME} ${OBJS}
 
-debug: ${OBJS}
-    ${CC} ${DFLAGS} -o ${NAME} ${OBJS}
+all : ${NAME}
 
 clean:
-    ${RM} ${OBJS}
+	${RM} ${OBJS}
 
 fclean: clean
-    ${RM} ${NAME}
+		${RM} ${NAME}
 
 re: fclean all
-
-.PHONY: re fclean clean debug all

@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strs_to_tab.c                                   :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 16:59:45 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/13 22:36:38 by maserrie         ###   ########.fr       */
+/*   Created: 2022/11/09 20:41:56 by maserrie          #+#    #+#             */
+/*   Updated: 2022/11/12 01:01:16 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stock_str.h"
 #include <stdlib.h>
 
-char	*ft_strdup(char *src)
+char	*ft_strndup(char *src, int n)
 {
 	char	*dest;
 	int		i;
@@ -23,7 +22,7 @@ char	*ft_strdup(char *src)
 		i++;
 	dest = malloc (i + 1);
 	i = 0;
-	while (src[i])
+	while (src[i] && i < n)
 	{
 		dest[i] = src[i];
 		i++;
@@ -42,22 +41,40 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
+int	ft_instr(char *str, char c)
 {
-	int			i;
-	t_stock_str	*info;
-
-	info = malloc((ac + 1) * sizeof(t_stock_str));
-	if (!info)
-		return (0);
-	i = 0;
-	while (i < ac)
+	while (*str)
 	{
-		info[i].size = ft_strlen(av[i]);
-		info[i].str = av[i];
-		info[i].copy = ft_strdup(av[i]);
-		i++;
+		if (c == *str)
+			return (1);
+		str++;
 	}
-	info[i].str = 0;
-	return (info);
+	return (0);
+}
+
+char	**ft_split(char *str, char *charset)
+{
+	char	**dest;
+	int		i;
+	int		j;
+	int		nospace;
+
+	i = 0;
+	j = 0;
+	dest = malloc((ft_strlen(str) / 2 + 1) * sizeof(char *));
+	while (str[i])
+	{
+		nospace = i;
+		while (!ft_instr(charset, str[i]) && str[i])
+			i++;
+		if (nospace != i)
+		{
+			dest[j] = ft_strndup(str + nospace, i - nospace);
+			j++;
+		}
+		if (str[i])
+			i++;
+	}
+	dest[j] = 0;
+	return (dest);
 }
