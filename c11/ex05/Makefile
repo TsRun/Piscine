@@ -6,7 +6,7 @@
 #    By: maserrie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 17:56:37 by maserrie          #+#    #+#              #
-#    Updated: 2022/11/15 02:37:25 by maserrie         ###   ########.fr        #
+#    Updated: 2022/11/16 13:31:31 by maserrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ NAME = do-op
 ${NAME}: ${OBJS}
 	${CC} -o ${NAME} -I ${HEADERS} ${CFLAGS} ${OBJS}
 
-all: NAME
+all: ${NAME}
 
 clean:
 	${RM} ${OBJS}

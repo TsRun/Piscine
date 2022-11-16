@@ -1,29 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_str.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 23:14:09 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/16 13:20:35 by maserrie         ###   ########.fr       */
+/*   Created: 2022/11/16 14:45:00 by maserrie          #+#    #+#             */
+/*   Updated: 2022/11/16 14:45:18 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-int	ft_error(char *file_name, int i)
+int	ft_atoi
 {
-	if (i == 0)
-		ft_puterror("tail: cannot open \'");
-	else
-		ft_puterror("tail: error reading \'");
-	ft_puterror(basename(file_name));
-	if (i == 0)
-		ft_puterror("\' for reading: ");
-	else
-		ft_puterror("\': ");
-	ft_puterror(strerror(errno));
-	ft_puterror("\n");
-	return (-1);
 }

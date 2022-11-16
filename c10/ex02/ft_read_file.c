@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 23:01:37 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/16 01:55:38 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/16 13:34:32 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	ft_swap(char *a, char *b)
 
 int	size_file(char *file_name)
 {
-	int	i;
-	int	len;
-	int	fd;
-	char str[16000];
+	int		i;
+	int		len;
+	int		fd;
+	char	str[16000];
 
 	i = 0;
 	len = 1;
@@ -45,7 +45,7 @@ int	size_file(char *file_name)
 	return (i);
 }
 
-char	*ft_read_file(char *file_niame, int oct)
+char	*ft_read_file(char *file_name, int oct)
 {
 	char	*str;
 	int		size;
@@ -58,7 +58,7 @@ char	*ft_read_file(char *file_niame, int oct)
 	fd = open(file_name, O_RDONLY);
 	read(fd, str, size);
 	str[size] = 0;
-	if 
-	ft_putstr(str + size - oct);
+	if (oct != -1)
+		ft_putstr(str + size - oct);
 	return (str);
 }

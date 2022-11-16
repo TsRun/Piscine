@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 23:14:09 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/16 13:20:35 by maserrie         ###   ########.fr       */
+/*   Created: 2022/11/06 17:40:32 by maserrie          #+#    #+#             */
+/*   Updated: 2022/11/16 14:47:11 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
-
-int	ft_error(char *file_name, int i)
+int	ft_atoi2(char *str)
 {
-	if (i == 0)
-		ft_puterror("tail: cannot open \'");
-	else
-		ft_puterror("tail: error reading \'");
-	ft_puterror(basename(file_name));
-	if (i == 0)
-		ft_puterror("\' for reading: ");
-	else
-		ft_puterror("\': ");
-	ft_puterror(strerror(errno));
-	ft_puterror("\n");
-	return (-1);
+	int	i;
+	int	res;
+
+	res = 0;
+	i = 0;
+	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
+		i++;
+	if (str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = res * 10 + str[i] - 48;
+		i++;
+	}
+	return (res);
 }

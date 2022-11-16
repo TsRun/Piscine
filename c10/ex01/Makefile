@@ -6,7 +6,7 @@
 #    By: maserrie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 17:56:37 by maserrie          #+#    #+#              #
-#    Updated: 2022/11/15 23:20:59 by maserrie         ###   ########.fr        #
+#    Updated: 2022/11/16 13:30:53 by maserrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ NAME = ft_cat
 ${NAME}: ${OBJS}
 	${CC} -o ${NAME} -I ${HEADER} ${CFLAGS} ${OBJS}
 
-all: NAME
+all: ${NAME}
 
 clean:
 	${RM} ${OBJS}

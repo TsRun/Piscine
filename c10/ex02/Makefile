@@ -6,7 +6,7 @@
 #    By: maserrie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 17:56:37 by maserrie          #+#    #+#              #
-#    Updated: 2022/11/16 01:30:34 by maserrie         ###   ########.fr        #
+#    Updated: 2022/11/16 13:31:13 by maserrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ NAME = ft_tail
 ${NAME}: ${OBJS}
 	${CC} -o ${NAME} -I ${HEADER} ${CFLAGS} ${OBJS} ${LIB}
 
-all: NAME
+all: ${NAME}
 
 clean:
 	${RM} ${OBJS}
