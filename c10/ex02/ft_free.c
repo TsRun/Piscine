@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/06 17:40:32 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/16 19:19:12 by maserrie         ###   ########.fr       */
+/*   Created: 2022/11/16 17:33:12 by maserrie          #+#    #+#             */
+/*   Updated: 2022/11/16 22:49:32 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-t_number	ft_atoi2(char *str)
+void	ft_free_struct(t_list *tab)
 {
-	int			i;
-	t_number	res;
+	t_list	*yo;
 
-	res.n = 0;
-	res.test = 1;
-	i = 0;
-	while (str[i] == ' ')
-		i++;
-	if (str[i] == '+')
-		i++;
-	while (str[i])
+	while (tab)
 	{
-		if (str[i] >= '0' && str[i] <= '9')
-			res.n = res.n * 10 + str[i] - 48;
-		else
-			res.test = 0;
-		i++;
+		yo = tab->next;
+		free(tab);
+		tab = yo;
 	}
-	return (res);
+	free(tab);
 }

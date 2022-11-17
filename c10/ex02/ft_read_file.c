@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 23:01:37 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/16 13:34:32 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/17 01:23:25 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	size_file(char *file_name)
 	return (i);
 }
 
-char	*ft_read_file(char *file_name, int oct)
+void	ft_read_file(char *file_name, int oct)
 {
 	char	*str;
 	int		size;
@@ -53,12 +53,62 @@ char	*ft_read_file(char *file_name, int oct)
 
 	size = size_file (file_name);
 	if (size == -1)
-		return (0);
+		return ;
 	str = malloc (size + 1);
 	fd = open(file_name, O_RDONLY);
 	read(fd, str, size);
 	str[size] = 0;
-	if (oct != -1)
-		ft_putstr(str + size - oct);
-	return (str);
+	ft_putstr(str + size - oct);
+	free(str);
+}
+
+char	*ft_realloc_cat(char *s1, char *s2, int len)
+{
+	int		i;
+	char	*s3;
+	int		j;
+
+	i = ft_strlen(s1);
+	s3 = malloc (i + len + 2);
+	j = 0;
+	while (j < i)
+	{
+		s3[j] = s1[j];
+		j++;
+	}
+	i = 0;
+	while (i < len)
+	{
+		s3[i + j] = s2[i];
+		i++;
+	}
+	s3[i + j] = '\0';
+	free(s1);
+	return (s3);
+}
+
+void	ft_read_input(int oct)
+{
+	char	str[16000];
+	int		len;
+	char	*res;
+	int		red;
+
+	red = 1;
+	res = malloc(1);
+	res[0] = '\0';
+	len = 0;
+	while (red > 0)
+	{
+		red = read(0, str, 16000);
+		if (red > 0)
+		{
+			res = ft_realloc_cat(res, str, red);
+			len += red;
+		}
+	}
+	(void) oct;
+	ft_putstr(res + len - oct);
+	free(res);
+	return ;
 }
