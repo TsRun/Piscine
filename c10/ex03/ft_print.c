@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 01:27:19 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/17 00:41:43 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/18 00:37:15 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,23 @@ void	ft_putnstr(char *str, int n)
 int	ft_cmp(char *s1)
 {
 	int		i;
-	char	*s2;
+	int		c;
 
-	s2 = "-c";
-	i = 0;
-	while (s1[i] && s1[i] == s2[i])
+	i = 1;
+	c = 0;
+	if (s1[0] != '-' || s1[1] == '\0')
+		return (0);
+	while (s1[i] == 'C')
+	{
+		c++;
 		i++;
-	if (s1[i] == 0)
-		return (2);
-	else if (s2[i] == 0)
-		return (1);
-	return (0);
+	}
+	if (s1[i] != '\0')
+	{
+		ft_error2(0, 0, s1 + i);
+		return (-1);
+	}
+	return (c);
 }
 
 void	ft_putstrtab(char **av, int n)

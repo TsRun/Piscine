@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_elem.c                                   :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 15:31:31 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/15 15:40:44 by maserrie         ###   ########.fr       */
+/*   Created: 2022/11/17 20:13:54 by maserrie          #+#    #+#             */
+/*   Updated: 2022/11/17 20:42:33 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include <stdio.h>
+#include "ft.h"
 
-t_list	*ft_create_elem(void *data)
+t_list	*ft_create_elem(void *data);
+
+void	ft_put_struct(t_list *begin)
 {
-	t_list	*elem;
+	while (begin)
+	{
+		printf("%s\n", begin->data);
+		begin = begin->next;
+	}
+}
 
-	elem = malloc(sizeof(t_list));
-	if (!elem)
-		return (0);
-	elem->data = data;
-	elem->next = 0;
-	return (elem);
+int	main(int ac, char **av)
+{
+	int 	i;
+	t_list	*begin;
+	t_list	list;
+
+	i = 0;
+	begin = ft_create_elem(
+	while (i < ac)
+	{
+		ft_create_elem
+	}
 }

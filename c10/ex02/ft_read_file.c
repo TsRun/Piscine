@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 23:01:37 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/17 01:43:11 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/17 21:19:43 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	size_file(char *file_name)
 	return (i);
 }
 
-void	ft_read_file(char *file_name, int oct)
+void	ft_read_file(char *file_name, int oct, int i)
 {
 	char	*str;
 	int		size;
@@ -58,6 +58,8 @@ void	ft_read_file(char *file_name, int oct)
 	fd = open(file_name, O_RDONLY);
 	read(fd, str, size);
 	str[size] = 0;
+	if (i)
+		ft_put_header(file_name);
 	if (oct < size)
 		ft_putstr(str + size - oct);
 	else
@@ -97,18 +99,17 @@ void	ft_read_input(int oct)
 	char	*res;
 	int		red;
 
-	red = 1;
+	if (oct == 0)
+		return ;
+	red = read(0, str, 16000);
 	res = malloc(1);
 	res[0] = '\0';
 	len = 0;
 	while (red > 0)
 	{
+		res = ft_realloc_cat(res, str, red);
+		len += red;
 		red = read(0, str, 16000);
-		if (red > 0)
-		{
-			res = ft_realloc_cat(res, str, red);
-			len += red;
-		}
 	}
 	if (oct < len)
 		ft_putstr(res + len - oct);

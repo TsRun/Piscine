@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 21:44:50 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/17 01:23:06 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/17 20:50:01 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int			ft_error(char *str, int i);
 void		ft_puterror(char *str);
 int			ft_strlen(char *str);
 void		ft_putstr(char *str);
-void		ft_read_file(char *str, int oct);
+void		ft_read_file(char *str, int oct, int i);
+void		ft_put_header(char *file_name);
 void		ft_putnbr(int nb);
 int			ft_atoi(char *str);
 t_number	ft_atoi2(char *str);

@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 23:14:09 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/17 16:22:31 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/17 23:35:57 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 int	ft_error(char *file_name, int i)
 {
 	if (i == 0)
-		ft_puterror("tail: cannot open \'");
+		ft_puterror("hexdump: cannot open \'");
 	else if (i == 1)
-		ft_puterror("tail: error reading \'");
+		ft_puterror("hexdump: error reading \'");
 	ft_puterror(basename(file_name));
 	if (i == 0)
 		ft_puterror("\' for reading: ");
@@ -33,7 +33,9 @@ t_list	*ft_error2(t_list *list, int n, char *str)
 {
 	if (n == 0)
 	{
-		ft_puterror("tail: option requires an argument -- ‘c’\n");
+		ft_puterror("hexdump: invalid option -- '");
+		write(2, str, 1);
+		ft_puterror("'\n");
 		return (0);
 	}
 	ft_puterror("tail: invalid number of bytes: ‘");

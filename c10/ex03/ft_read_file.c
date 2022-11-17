@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 23:01:37 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/17 01:43:11 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/18 00:25:36 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,48 +21,28 @@ void	ft_swap(char *a, char *b)
 	*b = c;
 }
 
-int	size_file(char *file_name)
+int	ft_read_file(char *file_name, int nb, t_string *str, int *size)
 {
-	int		i;
-	int		len;
 	int		fd;
-	char	str[16000];
+	int		len;
+	char	s2[16];
 
-	i = 0;
-	len = 1;
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 		return (ft_error(file_name, 0));
-	while (len)
+	len = read(fd, s2, 16 - str->size);
+	if (len < 0)
+		return (ft_error(file_name, 1));
+	ft_strncat(str->string, s2, len);
+	len += str->size;
+	while (len % 16 == 0 && len)
 	{
-		len = read(fd, str, 16000);
-		if (len < 0)
-			return (ft_error(file_name, 1));
-		i += len;
+		ft_print_norm(nb, str->string, 16, *size);
+		len = read(fd, str->string, 16);
+		*size = *size + 16;
 	}
-	if (close(fd) == -1)
-		return (ft_error(file_name, 0));
-	return (i);
-}
-
-void	ft_read_file(char *file_name, int oct)
-{
-	char	*str;
-	int		size;
-	int		fd;
-
-	size = size_file (file_name);
-	if (size == -1)
-		return ;
-	str = malloc (size + 1);
-	fd = open(file_name, O_RDONLY);
-	read(fd, str, size);
-	str[size] = 0;
-	if (oct < size)
-		ft_putstr(str + size - oct);
-	else
-		ft_putstr(str);
-	free(str);
+	str->size = len;
+	return (0);
 }
 
 char	*ft_realloc_cat(char *s1, char *s2, int len)

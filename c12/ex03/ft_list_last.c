@@ -1,43 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_list_last.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 22:31:09 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/17 22:52:45 by maserrie         ###   ########.fr       */
+/*   Created: 2022/11/17 20:08:19 by maserrie          #+#    #+#             */
+/*   Updated: 2022/11/17 20:12:11 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_list.h"
 
-void	ft_putchar2(char c)
+t_list	*ft_list_size(t_list *begin_list)
 {
-	c += '0';
-	write(1, &c, 1);
-}
-
-void	ft_putnbr2(unsigned int n)
-{
-	if (n < 10)
-		ft_putchar2(n);
-	else
-	{
-		ft_putnbr2(n / 10);
-		ft_putchar2(n % 10);
-	}
-}
-
-void	ft_putnbr(int nb)
-{
-	unsigned int	n;
-
-	if (nb < 0)
-	{
-		write(1, "-", 1);
-		nb *= -1;
-	}
-	n = nb;
-	ft_putnbr2(n);
+	while (begin_list->next)
+		begin_list = begin_list->next;
+	return (begin_list);
 }
