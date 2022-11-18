@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:45:00 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/18 00:38:14 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/18 12:05:46 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,10 @@ t_list	*str_modif(char **av, int ac)
 
 	i = 0;
 	tab = ft_create_elem(av[i]);
+	start = tab;
 	while (i < ac - 1)
 	{
 		tab->next = ft_create_elem(av[i + 1]);
-		if (i == 0)
-			start = tab;
 		tab = tab->next;
 		i++;
 	}
@@ -51,7 +50,7 @@ t_list	*ft_c2(t_list *list, t_list *elem, t_number *nb, int n)
 		return (0);
 	nb->n += n;
 	elem->next = list->next;
-	return (list);
+	return (elem);
 }
 
 int	ft_c_option(t_list *list)

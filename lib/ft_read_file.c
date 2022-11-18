@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 23:01:37 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/18 00:25:36 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/18 15:55:10 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ void	ft_swap(char *a, char *b)
 	*b = c;
 }
 
+char	*which_str(t_string	*str, int i)
+{
+	if (i % 32 == 0)
+		return (str->string);
+	else
+		return (str->prec);
+}
+
 int	ft_read_file(char *file_name, int nb, t_string *str, int *size)
 {
 	int		fd;
@@ -33,13 +41,14 @@ int	ft_read_file(char *file_name, int nb, t_string *str, int *size)
 	len = read(fd, s2, 16 - str->size);
 	if (len < 0)
 		return (ft_error(file_name, 1));
-	ft_strncat(str->string, s2, len);
+	ft_strncat(which_str(str, *size), s2, str->size, len);
 	len += str->size;
-	while (len % 16 == 0 && len)
+	str->size = len;
+	while (len % 16 == 0 && len > 0)
 	{
-		ft_print_norm(nb, str->string, 16, *size);
-		len = read(fd, str->string, 16);
+		ft_print_norm(nb, str, *size);
 		*size = *size + 16;
+		len = read(fd, which_str(str, *size), 16);
 	}
 	str->size = len;
 	return (0);
@@ -70,30 +79,41 @@ char	*ft_realloc_cat(char *s1, char *s2, int len)
 	return (s3);
 }
 
-void	ft_read_input(int oct)
+void	ft_read_input(int nb, t_string *str)
 {
-	char	str[16000];
 	int		len;
-	char	*res;
-	int		red;
+	int		k;
+	char	s1[32];
+	char	s2[16];
+	int		size;
 
-	red = 1;
-	res = malloc(1);
-	res[0] = '\0';
-	len = 0;
-	while (red > 0)
+	len = read(0, s2, 16);
+	s1[0] = 0;
+	k = 0;
+	size = 0;
+	while (len > 0)
 	{
-		red = read(0, str, 16000);
-		if (red > 0)
+		ft_strncat(s1, s2, size, len);
+		size += len;
+		if (size >= 16)
 		{
-			res = ft_realloc_cat(res, str, red);
-			len += red;
+			ft_strncpy(s1, which_str(str, k), 16);
+			str_16(s1, size);
+			str->size = 16;
+			ft_print_norm(nb, str, k);
+			size -= 16;
+			k += 16;
 		}
+		len = read(0, s2, 16);
 	}
-	if (oct < len)
-		ft_putstr(res + len - oct);
-	else
-		ft_putstr(res);
-	free(res);
-	return ;
+	str->size = size;
+	if (size)
+	{
+		ft_strncpy(s1, which_str(str, k), str->size);
+		ft_print_norm(nb, str, k);
+	}
+	k += size;
+	str->size = 0;
+	if (k)
+		ft_print_norm(nb, str, k);
 }
