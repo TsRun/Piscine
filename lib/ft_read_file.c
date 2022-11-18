@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 23:01:37 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/18 15:55:10 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/19 00:43:10 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int	ft_read_file(char *file_name, int nb, t_string *str, int *size)
 
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
-		return (ft_error(file_name, 0));
+		return (ft_error(file_name, 0, str->prog));
 	len = read(fd, s2, 16 - str->size);
 	if (len < 0)
-		return (ft_error(file_name, 1));
+		return (ft_error(file_name, 1, str->prog));
 	ft_strncat(which_str(str, *size), s2, str->size, len);
 	len += str->size;
 	str->size = len;

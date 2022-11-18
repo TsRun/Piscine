@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 23:01:37 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/17 21:19:43 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/19 00:19:10 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_swap(char *a, char *b)
 	*b = c;
 }
 
-int	size_file(char *file_name)
+unsigned long long	size_file(char *file_name, char *name)
 {
 	int		i;
 	int		len;
@@ -32,27 +32,27 @@ int	size_file(char *file_name)
 	len = 1;
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
-		return (ft_error(file_name, 0));
+		return (ft_error(file_name, 0, name));
 	while (len)
 	{
 		len = read(fd, str, 16000);
 		if (len < 0)
-			return (ft_error(file_name, 1));
+			return (ft_error(file_name, 1, name));
 		i += len;
 	}
 	if (close(fd) == -1)
-		return (ft_error(file_name, 0));
+		return (ft_error(file_name, 0, name));
 	return (i);
 }
 
-void	ft_read_file(char *file_name, int oct, int i)
+void	ft_read_file(char *file_name, unsigned long long oct, int i, char *name)
 {
-	char	*str;
-	int		size;
-	int		fd;
+	char				*str;
+	unsigned long long	size;
+	int					fd;
 
-	size = size_file (file_name);
-	if (size == -1)
+	size = size_file (file_name, name);
+	if (size == 0)
 		return ;
 	str = malloc (size + 1);
 	fd = open(file_name, O_RDONLY);
@@ -92,12 +92,12 @@ char	*ft_realloc_cat(char *s1, char *s2, int len)
 	return (s3);
 }
 
-void	ft_read_input(int oct)
+void	ft_read_input(unsigned long long oct)
 {
-	char	str[16000];
-	int		len;
-	char	*res;
-	int		red;
+	char				str[16000];
+	unsigned long long	len;
+	char				*res;
+	int					red;
 
 	if (oct == 0)
 		return ;

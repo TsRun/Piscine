@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 18:57:57 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/18 11:08:13 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/19 00:20:51 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,14 @@ void	ft_print_norm2(int nb, t_string *str, int k)
 	char	*str2;
 
 	if (str->size == 0)
-		return (ft_put_hexa(k, 8), ft_putstr("\n"));
+	{
+		if (k)
+			return (ft_put_hexa(k, 8), ft_putstr("\n"));
+		else
+			return ;
+	}
 	str2 = which_str(str, k);
-	if (k != 0 && !strncmp(str2, which_str(str, k - 16), str->size))
+	if (k != 0 && !ft_strncmp(str2, which_str(str, k - 16), str->size))
 	{
 		if (str->djvu != 1)
 			ft_putstr("*\n");
@@ -97,9 +102,14 @@ void	ft_print_norm(int nb, t_string *str, int k)
 	if (nb > 0)
 		return ;
 	if (str->size == 0)
-		return (ft_put_hexa(k, 7), ft_putstr("\n"));
+	{
+		if (k)
+			return (ft_put_hexa(k, 7), ft_putstr("\n"));
+		else
+			return ;
+	}
 	str2 = which_str(str, k);
-	if (k != 0 && !strncmp(str2, which_str(str, k - 16), str->size))
+	if (k != 0 && !ft_strncmp(str2, which_str(str, k - 16), str->size))
 	{
 		if (str->djvu != 1)
 			ft_putstr("*\n");

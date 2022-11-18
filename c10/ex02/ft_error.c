@@ -6,18 +6,19 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 23:14:09 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/17 16:22:31 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/19 00:07:40 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-int	ft_error(char *file_name, int i)
+int	ft_error(char *file_name, int i, char *name)
 {
+	ft_puterror(name);
 	if (i == 0)
-		ft_puterror("tail: cannot open \'");
+		ft_puterror(": cannot open \'");
 	else if (i == 1)
-		ft_puterror("tail: error reading \'");
+		ft_puterror(": error reading \'");
 	ft_puterror(basename(file_name));
 	if (i == 0)
 		ft_puterror("\' for reading: ");
@@ -26,19 +27,23 @@ int	ft_error(char *file_name, int i)
 	if (i != 2)
 		ft_puterror(strerror(errno));
 	ft_puterror("\n");
-	return (-1);
+	return (0);
 }
 
-t_list	*ft_error2(t_list *list, int n, char *str)
+t_list	*ft_error2(t_list *list, int n, char *str, char *name)
 {
+	ft_puterror(name);
 	if (n == 0)
 	{
-		ft_puterror("tail: option requires an argument -- ‘c’\n");
+		ft_puterror(": option requires an argument -- ‘c’\n");
 		return (0);
 	}
-	ft_puterror("tail: invalid number of bytes: ‘");
+	ft_puterror(": invalid number of bytes: ‘");
 	ft_puterror(basename(str));
-	ft_puterror("’\n");
+	ft_puterror("’");
+	if (n == 2)
+		ft_puterror(": Value too large for defined data type");
+	ft_puterror("\n");
 	free(list);
 	return (0);
 }

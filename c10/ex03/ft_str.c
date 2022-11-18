@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:45:00 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/18 12:05:46 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/19 00:33:40 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_list	*ft_c2(t_list *list, t_list *elem, t_number *nb, int n)
 	return (elem);
 }
 
-int	ft_c_option(t_list *list)
+int	ft_c_option(t_list *list, char *name)
 {
 	t_list		*elem;
 	t_number	*nb;
@@ -65,7 +65,7 @@ int	ft_c_option(t_list *list)
 	nb->n = 0;
 	while (list)
 	{
-		n = ft_cmp(list->str);
+		n = ft_cmp(list->str, name);
 		if (n)
 		{
 			list = ft_c2(list, elem, nb, n);

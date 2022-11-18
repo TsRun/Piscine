@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 21:44:50 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/18 15:39:01 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/19 00:38:58 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,15 @@ typedef struct s_list
 
 typedef struct s_string
 {
+	char	*prog;
 	char	*prec;
 	char	*string;
 	int		size;
 	int		djvu;
 }	t_string;
 
-t_list		*ft_error2(t_list *list, int n, char *str);
-int			ft_error(char *str, int i);
+t_list		*ft_error2(t_list *list, int n, char *str, char *s);
+int			ft_error(char *str, int i, char *name);
 void		ft_puterror(char *str);
 int			ft_strlen(char *str);
 void		ft_putstr(char *str);
@@ -55,10 +56,10 @@ t_number	ft_atoi2(char *str);
 char		**ft_split(char *str, char *sep);
 void		ft_putchar(char c);
 void		ft_putnstr(char *str, int n);
-int			ft_cmp(char *str);
+int			ft_cmp(char *str, char *name);
 t_list		*str_modif(char **av, int ac);
 void		ft_free_struct(t_list *yo);
-int			ft_c_option(t_list *list);
+int			ft_c_option(t_list *list, char *str);
 void		ft_put_struct(t_list *list);
 void		ft_read_input(int oct, t_string *str);
 void		ft_print_norm(int c, t_string *str, int e);

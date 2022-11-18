@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 01:27:19 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/18 00:37:15 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/19 00:36:18 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_putnstr(char *str, int n)
 	write(1, str, n);
 }
 
-int	ft_cmp(char *s1)
+int	ft_cmp(char *s1, char *name)
 {
 	int		i;
 	int		c;
@@ -38,7 +38,7 @@ int	ft_cmp(char *s1)
 	}
 	if (s1[i] != '\0')
 	{
-		ft_error2(0, 0, s1 + i);
+		ft_error2(0, 0, s1 + i, name);
 		return (-1);
 	}
 	return (c);

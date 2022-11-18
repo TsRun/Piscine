@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:45:00 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/17 02:01:33 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/19 00:09:47 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_list	*str_modif(char **av, int ac)
 	return (start);
 }
 
-t_list	*ft_c2(t_list *list, t_list *elem, t_number *nb)
+t_list	*ft_c2(t_list *list, t_list *elem, t_number *nb, char *name)
 {
 	char		*str;
 	t_list		*supp_free;
@@ -53,7 +53,7 @@ t_list	*ft_c2(t_list *list, t_list *elem, t_number *nb)
 	if (ft_cmp(list->str) == 2)
 	{
 		if (list->next == 0)
-			return (ft_error2(list, 0, ""));
+			return (ft_error2(list, 0, "", name));
 		supp_free = list;
 		list = list->next;
 		free(supp_free);
@@ -67,27 +67,29 @@ t_list	*ft_c2(t_list *list, t_list *elem, t_number *nb)
 	}
 	*nb = ft_atoi2(str);
 	if (nb->test == 0)
-		return (ft_error2(list, 1, str));
+		return (ft_error2(list, 1, str, name));
+	if (nb->test == -1)
+		return (ft_error2(list, 2, str, name));
 	free(list);
 	return (elem);
 }
 
-int	ft_c_option(t_list *list)
+unsigned long long	ft_c_option(t_list *list, char *name)
 {
-	t_list		*elem;
-	t_number	*nb;
-	int			oct;
+	t_list				*elem;
+	t_number			*nb;
+	unsigned long long	oct;
 
 	elem = list;
 	nb = malloc(sizeof (t_number));
-	nb->n = -1;
+	nb->n = 0;
 	while (list)
 	{
 		if (ft_cmp(list->str))
 		{
-			list = ft_c2(list, elem, nb);
+			list = ft_c2(list, elem, nb, name);
 			if (!list)
-				return (-1);
+				return (0);
 			list = elem->next;
 		}
 		else
