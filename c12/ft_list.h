@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_last.c                                     :+:      :+:    :+:   */
+/*   ft_list.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 20:08:19 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/18 17:02:09 by maserrie         ###   ########.fr       */
+/*   Created: 2022/11/15 15:32:35 by maserrie          #+#    #+#             */
+/*   Updated: 2022/11/17 20:07:38 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#ifndef FT_LIST_H
+# define FT_LIST_H
 
-t_list	*ft_list_last(t_list *begin_list)
+# include <stdlib.h>
+
+typedef struct s_list
 {
-	while (begin_list->next)
-		begin_list = begin_list->next;
-	return (begin_list);
-}
+	void			*data;
+	struct s_list	*next;
+}	t_list;
+
+#endif

@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_fronc.c                               :+:      :+:    :+:   */
+/*   ft_list_push_strs.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 15:58:51 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/17 20:06:47 by maserrie         ###   ########.fr       */
+/*   Created: 2022/11/15 15:31:31 by maserrie          #+#    #+#             */
+/*   Updated: 2022/11/18 16:56:21 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-t_list	*ft_create_elem(void *data)
+t_list	*ft_create_elem(void *data);
+
+t_list	*ft_list_push_strs(int size, char **data)
 {
 	t_list	*elem;
+	t_list	*nex;
+	int		i;
 
-	elem = malloc(sizeof(t_list));
-	if (!elem)
-		return (0);
-	elem->data = data;
-	elem->next = 0;
-	return (elem);
-}
-
-void	ft_list_push_front(t_list **begin_list, void *data)
-{
-	t_list	*elem;
-
-	elem = ft_create_elem(data);
-	elem->next = *begin_list;
-	*begil_list = elem;
+	i = 0;
+	elem = 0;
+	while (i < size)
+	{
+		nex = ft_create_elem(data[i]);
+		nex->next = elem;
+		i++;
+		elem = nex;
+	}
+	return (nex);
 }

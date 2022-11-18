@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_last.c                                     :+:      :+:    :+:   */
+/*   ft_list_push_front.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 20:08:19 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/18 17:02:09 by maserrie         ###   ########.fr       */
+/*   Created: 2022/11/15 15:58:51 by maserrie          #+#    #+#             */
+/*   Updated: 2022/11/18 17:00:44 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-t_list	*ft_list_last(t_list *begin_list)
+t_list	*ft_create_elem(void *data);
+
+void	ft_list_push_front(t_list **begin_list, void *data)
 {
-	while (begin_list->next)
-		begin_list = begin_list->next;
-	return (begin_list);
+	t_list	*elem;
+
+	elem = ft_create_elem(data);
+	elem->next = *begin_list;
+	*begin_list = elem;
 }
