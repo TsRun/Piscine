@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 21:44:50 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/18 23:35:55 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:55:40 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,15 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+typedef unsigned long long	t_lol;
+
 t_list				*ft_error2(t_list *list, int n, char *str, char *name);
 int					ft_error(char *str, int i, char *name);
 void				ft_puterror(char *str);
 int					ft_strlen(char *str);
 void				ft_putstr(char *str);
-void				ft_read_file(char *s, unsigned long long o, int i, char *n);
-void				ft_put_header(char *file_name);
+void				ft_read_file(char *s, t_lol o, t_number i, char *n);
+void				ft_put_header(char *file_name, t_number i);
 void				ft_putnbr(int nb);
 int					ft_atoi(char *str);
 t_number			ft_atoi2(char *str);

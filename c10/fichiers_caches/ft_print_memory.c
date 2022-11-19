@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 18:57:57 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/19 00:20:51 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/19 15:18:51 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_print_norm2(int nb, t_string *str, int k)
 			return ;
 	}
 	str2 = which_str(str, k);
-	if (k != 0 && !ft_strncmp(str2, which_str(str, k - 16), str->size))
+	if (k != 0 && ft_strncmp(str2, which_str(str, k - 16), str->size))
 	{
 		if (str->djvu != 1)
 			ft_putstr("*\n");
@@ -109,7 +109,7 @@ void	ft_print_norm(int nb, t_string *str, int k)
 			return ;
 	}
 	str2 = which_str(str, k);
-	if (k != 0 && !ft_strncmp(str2, which_str(str, k - 16), str->size))
+	if (k != 0 && ft_strncmp(str2, which_str(str, k - 16), str->size))
 	{
 		if (str->djvu != 1)
 			ft_putstr("*\n");
@@ -133,7 +133,17 @@ void	ft_print_norm(int nb, t_string *str, int k)
 		i++;
 	}
 	if (str->size % 2)
+	{
 		ft_put_hexa(str2[i - 1], 2);
+		i++;
+	}
+	while (i < 16)
+	{
+		if (i % 2 == 0)
+			ft_putchar(' ');
+		ft_putstr("  ");
+		i++;
+	}
 	str->djvu = 0;
 	ft_putchar('\n');
 }

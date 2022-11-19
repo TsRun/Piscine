@@ -6,7 +6,7 @@
 #    By: maserrie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 17:56:37 by maserrie          #+#    #+#              #
-#    Updated: 2022/11/18 15:58:13 by maserrie         ###   ########.fr        #
+#    Updated: 2022/11/19 16:14:39 by maserrie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CFLAGS = -Wall -Werror -Wextra -g
 
 OBJS = ${SRCS:.c=.o}
 
-LIB = lib_mathis.a
+LIB = lib_mathis.a lib_tkt_frr.a
 
 HEADER = ft.h
 
