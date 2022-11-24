@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 22:12:56 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/22 22:14:03 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/24 16:43:41 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 typedef struct s_btree
 {
-	void			*data;
 	struct s_btree	*left;
 	struct s_btree	*right;
+	void			*item;
 }	t_btree;
 
 #endif
