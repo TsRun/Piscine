@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 22:16:13 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/24 18:21:31 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/24 19:01:59 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	btree_apply_by_level2(t_btree *root, void (*applyf)(void *item,
 {
 	if (cur == i)
 	{
-		applyf(root->item, cur, cur == 0);
+		applyf(root->item, cur, cur == 1);
 		return ;
 	}
 	else if (cur > i)
