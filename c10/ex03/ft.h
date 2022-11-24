@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 21:44:50 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/19 00:38:58 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/21 19:09:53 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define FT_H
 
 # include <unistd.h>
-# include <sys/types.h>
-# include <sys/stat.h>
 # include <fcntl.h>
 # include <string.h>
 # include <errno.h>

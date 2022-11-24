@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clear.c                                    :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clemoine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 17:10:57 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/23 15:18:32 by maserrie         ###   ########.fr       */
+/*   Created: 2022/11/20 01:10:36 by clemoine          #+#    #+#             */
+/*   Updated: 2022/11/20 14:09:35 by clemoine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft.h"
 
-#include <stdlib.h>
-#include "ft_list.h"
-
-void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
+void	ft_freetab(char **tab)
 {
-	if (!begin_list)
-		return ;
-	ft_list_clear(begin_list->next, free_fct);
-	free_fct(begin_list->data);
-	free(begin_list);
+	int	a;
+
+	a = 0;
+	while (tab[a])
+	{
+		free(tab[a]);
+		a++;
+	}
+	free(tab);
 }

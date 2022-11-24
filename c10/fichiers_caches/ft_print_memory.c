@@ -6,14 +6,14 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 18:57:57 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/19 15:18:51 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/19 20:28:10 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 #define HEXA "0123456789abcdef"
 
-void	ft_put_hexa(unsigned int adr, int i)
+void	ft_put_hexa(unsigned char adr, int i)
 {
 	if (i > 1)
 	{

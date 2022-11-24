@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 23:01:37 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/19 15:55:46 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/19 19:38:48 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ unsigned long long	size_file(char *file_name, char *name)
 	return (i);
 }
 
-void	ft_read_file(char *file_name, t_lol oct, t_number i, char *name)
+void	ft_read_file(char *file_name, t_lol oct, t_number *i, char *name)
 {
 	char				*str;
 	unsigned long long	size;
@@ -58,12 +58,13 @@ void	ft_read_file(char *file_name, t_lol oct, t_number i, char *name)
 	fd = open(file_name, O_RDONLY);
 	read(fd, str, size);
 	str[size] = 0;
-	if (i.test)
-		ft_put_header(file_name, i);
+	if (i->test)
+		ft_put_header(file_name, *i);
+	i->n = i->n + 1;
 	if (oct < size)
-		ft_putstr(str + size - oct);
+		ft_putnstr(str + size - oct, oct);
 	else
-		ft_putstr(str);
+		ft_putnstr(str, size);
 	free(str);
 }
 

@@ -6,7 +6,7 @@
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:31:31 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/18 16:56:21 by maserrie         ###   ########.fr       */
+/*   Updated: 2022/11/23 12:33:33 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_list	*ft_list_push_strs(int size, char **data)
 
 	i = 0;
 	elem = 0;
+	if (size <= 0)
+		return (0);
 	while (i < size)
 	{
 		nex = ft_create_elem(data[i]);

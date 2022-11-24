@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clear.c                                    :+:      :+:    :+:   */
+/*   btree_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maserrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 17:10:57 by maserrie          #+#    #+#             */
-/*   Updated: 2022/11/23 15:18:32 by maserrie         ###   ########.fr       */
+/*   Created: 2022/11/22 22:16:13 by maserrie          #+#    #+#             */
+/*   Updated: 2022/11/22 22:29:33 by maserrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_btree.h"
 #include <stdlib.h>
-#include "ft_list.h"
 
-void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
+t_btree	*btree_create_node(void *item)
 {
-	if (!begin_list)
-		return ;
-	ft_list_clear(begin_list->next, free_fct);
-	free_fct(begin_list->data);
-	free(begin_list);
+	t_btree	*elem;
+
+	elem = malloc(sizeof(t_btree));
+	elem->data = item;
+	elem->left = 0;
+	elem->right = 0;
+	return (elem);
 }
