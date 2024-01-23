@@ -28,4 +28,4 @@ Ce README est un récapitulatif personnel de mon expérience à la Piscine de 42
 - Mathis Serrier - maserrie@student.42perpignan.fr
 
 ---
-Document rédigé par Mathis Serrier, alumnus de la Piscine 42.
+Document rédigé par Mathis Serrier.
